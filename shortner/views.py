@@ -19,7 +19,7 @@ def index(request):
                 )
                 newurl.save()
                 res = 'success'
-                msg = 'www.shrinklink.com/'+ str(short)
+                msg = 'https://shrinkthelink.herokuapp.com/'+ str(short)
                 return render(request,'index.html',{'msg':msg})
             else:
                 msg = "Oops! unique name already exists"
