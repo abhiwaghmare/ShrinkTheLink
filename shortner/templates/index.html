@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/shortner.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/e1272a8507.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>URL SHORTENER</title>
+  </head>
+  <body>
+    <div id="body">
+      <center>
+        <form method="POST" id="post-form">
+          {% csrf_token %}
+          <div class="container1">
+            <h1>
+              <i class="fas fa-link fa-xs"></i>&nbsp;ShrinkTheLink URL Shortener
+            </h1>
+            <h3>
+              ShrinkTheLink is a free tool to shorten URLs. <br />
+              Create short & memorable links in seconds.
+            </h3>
+            <br /><br />
+            <form id="input-link">
+              <div class="ui icon input">
+                <input
+                  style="width: 750px; height: 35px"
+                  name="original"
+                  id="original"
+                  type="text"
+                  placeholder="Enter Original URL"
+                  required
+                />
+              </div>
+              <br /><br />
+              <div class="ui labeled input">
+                <div
+                  class="ui label"
+                  style="background-color: rgb(243, 52, 18); color: white"
+                >
+                  http://
+                </div>
+                <input
+                  style="width: 300px; height: 35px"
+                  type="text"
+                  id="short"
+                  name="short"
+                  placeholder="unique name"
+                />
+              </div>
+              <br />
+              <br />
+              <button class="positive ui button">Shorten URL now</button>
+              <br /><br />
+              <div id="message">
+                <div class="ui action input">
+                  <input
+                    style="width: 300px"
+                    type="text"
+                    class="copyInput"
+                    id="copyInput"
+                    value="{{ successmsg }}"
+                    placeholder="Shortened Url"
+                  />
+                  <button
+                    onclick="myFunction()"
+                    type="button"
+                    name="copyToken"
+                    value="copy"
+                    class="copyToken ui right icon button"
+                  >
+                    <i class="clipboard icon"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </form>
+        <div id="description">
+          <h2>A fast and user-friendly URL shortener</h2>
+          <p>
+            Tired of creating short links which turn out to be weird and easy to
+            forget? Use ShrinkTheLink, a free URL shortener for transforming long,
+            ugly links into nice, memorable and short URLs. Shorten links for
+            social media platforms, blogs, SMS, emails, ads, or pretty much
+            anywhere else you want to share them - Twitter, Facebook, Instagram,
+            WhatsApp, etc.
+          </p>
+        </div>
+      </center>
+    </div>
+    <footer>
+      <a
+        >&copy; Made with <span style="color: red">&#9829;</span> Abhishek
+        Waghmare </a
+      ><a href="https://www.linkedin.com/in/abhishek-waghmare/" target="_blank"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+    </footer>
+  </body>
+  <script>
+    function myFunction() {
+      var copyText = document.getElementById("copyInput");
+
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+
+      document.execCommand("copy");
+    }
+  </script>
+</html>
