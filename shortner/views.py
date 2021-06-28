@@ -7,8 +7,8 @@ def randomgen():
     return ''.join(random.choice(string.ascii_lowercase) for i in range(6))
 
 def go(request,pk):
-    url_details = ShortUrl.objects.get(short=pk)
-    return redirect('https://'+url_details.original)
+    url_details = ShortUrl.objects.get(short_query=pk)
+    return redirect(url_details.original_url)
 
 def index(request):
     if request.method == 'POST':
