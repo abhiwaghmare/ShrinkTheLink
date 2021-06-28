@@ -1,10 +1,14 @@
 from django.core.checks import messages
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import ShortUrl
 import random,string
 
 def randomgen():
     return ''.join(random.choice(string.ascii_lowercase) for i in range(6))
+
+def go(request,pk):
+    url_details = ShortUrl.objects.get(short=pk)
+    return redirect('https://'+url_details.original)
 
 def index(request):
     if request.method == 'POST':
